@@ -41,19 +41,19 @@ ft_memcpy.o ft_striter.o ft_strnstr.o ft_putnbr_fd.o ft_strupper.o \
 ft_memdel.o ft_striteri.o ft_strrchr.o ft_search_and_replace.o \
 ft_lstadd.o ft_lstdel.o ft_lstdelone.o ft_lstmap.o ft_lstiter.o ft_lstnew.o
 
-INCL = ./
-
-$(NAME): $(SRC) libft.h
-	gcc -Wall -Wextra -Werror -I $(INCL) -c $(SRC)
-	ar rc $(NAME) $(OBJ)
-	ranlib $(NAME)
+INCLUDE = libft.h
 
 all: $(NAME)
 
+$(NAME):
+	@gcc -c -Wall -Wextra -Werror $(SRC) -I $(INCLUDE)
+	@ar rc $(NAME) $(OBJ)
+	@ranlib $(NAME)
+
 clean:
-	/bin/rm -f $(OBJ) 
+	@/bin/rm -f $(OBJ)
 
 fclean: clean
-	/bin/rm -f $(NAME)
+	@/bin/rm -f $(NAME)
 
 re: fclean all
